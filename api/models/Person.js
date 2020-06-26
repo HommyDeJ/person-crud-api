@@ -7,7 +7,7 @@ let Person = new schema({
         type: String
     },
 
-    lastName: {
+    last_name: {
         type: String
     },
 
@@ -15,7 +15,7 @@ let Person = new schema({
         type: String
     },
 
-    phoneNumber: {
+    phone_number: {
         type: String
     },
 

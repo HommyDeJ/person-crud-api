@@ -1,22 +1,27 @@
-let path = require('path'),
-    cors = require('cors'),
-    express = require('express'),
-    mongoose = require('mongoose'),
+let path       = require('path'),
+    cors       = require('cors'),
+    express    = require('express'),
+    mongoose   = require('mongoose'),
     bodyParser = require('body-parser'),
-    dbConfig = require('./database/db');
+    dbConfig   = require('../database/dbConfig');
 
+
+    //MONGO DB CONNECTION
     mongoose.Promise - global.Promise;
     mongoose.connect(dbConfig.db, {
         useNewUrlParser: true
     }).then(() => {
-        console.log('Conexión exitosa');
+        console.log('Database connected');
     },
     error => {
-        console.log('Problemas al contextar con la DB');
+        console.log('Database connection error');
     });
 
-    const personRoute = require('../api/routes/person/person.route');
+    //ROUTE DECLARATION
+    const personRoute = require('../routes/person/person.route');
+
     const app = express();
+
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: false
@@ -24,8 +29,11 @@ let path = require('path'),
     app.use(cors());
     app.use(express.static(path.join(__dirname, 'dist/person-crud')));
     app.use('/', express.static(path.join(__dirname, 'dist/person-crud')));
+    
+    //ROUTES
+    app.use('/api', personRoute);
 
-    //Port Config
+    //PORT CONFIG
     const port = process.env.PORT || 3000;
     const server = app.listen(port, () => {
         console.log(`Connected to port ${port}`);
