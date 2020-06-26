@@ -1,0 +1,33 @@
+<div class="container">
+    <!-- No data message -->
+    <p *ngIf="Persons.length <= 0" class="no-data text-center">Sin registros</p>
+  
+    <!-- Employee list -->
+    <table class="table table-bordered" *ngIf="Persons.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Número celular</th>
+          <th scope="col center">Actualizar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of Persons; let i = index">
+          <td>{{person.name}}</td>
+          <td>{{person.last_name}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.cellphone_number}}</td>         
+          <td class="text-center edit-block">
+            <span class="edit" [routerLink]="['/edit-person/', person._id]">
+              <button type="button" class="btn btn-primary btn-sm">Editar</button>
+            </span>
+            <span class="delete" (click)="removePerson(person, i)">
+              <button type="button" class="btn btn-danger btn-sm">Eliminar</button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

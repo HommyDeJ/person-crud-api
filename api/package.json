@@ -30,6 +30,7 @@
     "typescript": "^3.9.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.6",
     "nodemon": "^2.0.4"
   }
 }
