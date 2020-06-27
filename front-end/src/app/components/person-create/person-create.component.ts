@@ -34,6 +34,7 @@ export class PersonCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.personForm.controls);
     this.submitted = true;
     if (!this.personForm.valid) {
       return false;
