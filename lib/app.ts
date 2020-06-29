@@ -27,7 +27,7 @@ class App {
             allowedHeaders: ["Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept", "*"],
             credentials: true,
             methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-            origin: [/.*localhost.*/],
+            origin: ["https://person-crud-newtech-frontend.herokuapp.com/"],
             preflightContinue: false
         };
 
