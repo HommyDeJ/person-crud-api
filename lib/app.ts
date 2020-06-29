@@ -2,7 +2,7 @@ import * as cors from "cors";
 import * as dotenv from 'dotenv';
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { Routes } from "../lib/routes/Routes";
+import { Routes } from "./routes/Routes";
 let mongoose = require("mongoose");
 
 class App {
