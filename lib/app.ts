@@ -1,4 +1,5 @@
 import * as cors from "cors";
+import * as dotenv from 'dotenv';
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { Routes } from "../lib/routes/Routes";
@@ -8,7 +9,7 @@ class App {
 
     public app: express.Application;
     public routes: Routes = new Routes();
-    public mongoUrl: string = 'mongodb://localhost:27017/person-crud';
+    public mongoUrl: string = process.env.MONGODB_URI || 'mongodb://localhost:27017/person-crud';
 
     constructor() {
         this.app = express();
@@ -32,6 +33,7 @@ class App {
 
         //use cors middleware
         this.app.use(cors(options));
+        dotenv.config();
 
         //add your routes
 
